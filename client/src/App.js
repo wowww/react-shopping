@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Products from './components/Products/Products'
+import Products from './components/Products/Products';
+import Cart from './components/Cart/Cart';
 
 const PAGE_PRODUCTS = 'products';
 const PAGE_CART = 'cart';
@@ -23,28 +24,6 @@ function App() {
     setPage(nextPage);
   } 
 
-  // const renderProducts = () => (
-    
-  // )
-
-  const renderCart = () => (
-    <>
-      <h1>Cart</h1>
-      <div className="products">
-        {cart.map((product, index) => (
-          <div className="product" key={index}>
-            <h3>{product.name} - {product.color}</h3>
-            <h4>$ {product.cost}</h4>
-            <img src={product.image} alt={product.name} />
-            <button onClick={() => removeFromCart(product)}>
-              Remove
-            </button>  
-          </div>
-        ))}
-      </div>
-    </>
-  )
-
   return (
     <div className="App">
       <nav>
@@ -52,7 +31,8 @@ function App() {
         <button onClick={() => navigateTo(PAGE_PRODUCTS)}>View Products</button>  
       </nav>
       {page === PAGE_PRODUCTS && <Products addToCart={addToCart} />}
-      {page === PAGE_CART && renderCart()}
+      {page === PAGE_CART && <Cart cart={cart} removeFromCart={removeFromCart} />}
+      
     </div>
   );
 }
