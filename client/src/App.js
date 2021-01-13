@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const PAGE_PRODUCTS = 'products';
+const PAGE_CART = 'cart';
+
 function App() {
   const [cart, setCart] = useState([]);
-  const [page, setPage] = useState('products');
+  const [page, setPage] = useState(PAGE_PRODUCTS);
 
   const [products] = useState([
     {
@@ -36,28 +39,49 @@ function App() {
     setCart([...cart, product])
   }
 
+  const renderProducts = () => (
+    <>
+      <h1>Products</h1>
+      <div className="products">
+        {products.map((product, index) => (
+          <div className="product" key={index}>
+            <h3>{product.name} - {product.color}</h3>
+            <h4>$ {product.cost}</h4>
+            <img src={product.image} alt={product.name} />
+            <button onClick={() => addToCart(product)}>
+              Add to Cart
+            </button>  
+          </div>
+        ))}
+      </div>
+    </>
+  )
+
+  const renderCart = () => (
+    <>
+      <h1>Cart</h1>
+      <div className="products">
+        {products.map((product, index) => (
+          <div className="product" key={index}>
+            <h3>{product.name} - {product.color}</h3>
+            <h4>$ {product.cost}</h4>
+            <img src={product.image} alt={product.name} />
+            {/* <button onClick={() => addToCart(product)}>
+              Add to Cart
+            </button>   */}
+          </div>
+        ))}
+      </div>
+    </>
+  )
+
   return (
     <div className="App">
       <nav>
         <button>Go to Cart({cart.length})</button>  
       </nav>
-      {page === 'products' && (
-      <>
-        <h1>Products</h1>
-        <div className="products">
-          {products.map((product, index) => (
-            <div className="product" key={index}>
-              <h3>{product.name} - {product.color}</h3>
-              <h4>$ {product.cost}</h4>
-              <img src={product.image} alt={product.name} />
-              <button onClick={() => addToCart(product)}>
-                Add to Cart
-              </button>  
-            </div>
-          ))}
-        </div>
-      </>
-      )}
+      {page === PAGE_PRODUCTS && renderProducts()}
+      {page === PAGE_CART && renderCart()}
     </div>
   );
 }
