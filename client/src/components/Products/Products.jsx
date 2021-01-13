@@ -6,25 +6,25 @@ function Products({ addToCart }) {
       name: 'Magic Keyboard',
       color: '실버',
       cost: '12.99',
-      image: '/static/media/MQ052KH.5d2a82a4.jpg',
+      image: 'https://i.imgur.com/zqJPkeR.jpg',
     },
     {
       name: 'Magic Keyboard',
       color: '블랙',
       cost: '13.99',
-      image: '/static/media/MRMH2KH.65d0cdfc.jpg',
+      image: 'https://i.imgur.com/2XbWYjH.jpg',
     },
     {
       name: 'Magic Trackpad',
       color: '실버',
       cost: '2.99',
-      image: '/static/media/MJ2R2.a2ca8f6d.jpg',
+      image: 'https://i.imgur.com/aEzZJnp.jpg',
     },
     {
       name: 'Magic Trackpad',
       color: '블랙',
       cost: '3.99',
-      image: '/static/media/MRMF2.459ea8b1.jpg',
+      image: 'https://i.imgur.com/9cMLvfF.jpg',
     },
   ])
 
