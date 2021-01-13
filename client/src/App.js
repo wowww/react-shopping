@@ -39,6 +39,10 @@ function App() {
     setCart([...cart, product])
   }
 
+  const navigateTo = (nextPage) => {
+    setPage(nextPage);
+  } 
+
   const renderProducts = () => (
     <>
       <h1>Products</h1>
@@ -61,7 +65,7 @@ function App() {
     <>
       <h1>Cart</h1>
       <div className="products">
-        {products.map((product, index) => (
+        {cart.map((product, index) => (
           <div className="product" key={index}>
             <h3>{product.name} - {product.color}</h3>
             <h4>$ {product.cost}</h4>
@@ -78,7 +82,8 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <button>Go to Cart({cart.length})</button>  
+        <button onClick={() => navigateTo(PAGE_CART)}>Go to Cart({cart.length})</button>  
+        <button onClick={() => navigateTo(PAGE_PRODUCTS)}>View Products</button>  
       </nav>
       {page === PAGE_PRODUCTS && renderProducts()}
       {page === PAGE_CART && renderCart()}
